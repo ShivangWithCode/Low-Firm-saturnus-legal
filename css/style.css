@@ -3200,69 +3200,87 @@ button {
     font-size: 0.82rem;
   }
 
-  /* Compact Disclaimer Gateway on Mobile */
+  /* Compact Disclaimer Gateway on Mobile — Fits 100% on screen without scroll */
+  .entry-disclaimer-gateway {
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
   .entry-disclaimer-card {
-    padding: 1.25rem 1.15rem;
-    max-height: 94vh;
+    padding: 1rem 0.95rem 0.85rem;
+    max-height: 92vh;
+    border-radius: 6px;
+    margin: auto;
   }
 
   .entry-disclaimer-header {
-    gap: 12px;
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.75rem;
+    gap: 10px;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.45rem;
   }
 
   .entry-disclaimer-emblem {
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
   }
 
   .entry-brand-title {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
   }
 
   .entry-brand-sub {
-    font-size: 0.58rem;
+    font-size: 0.55rem;
   }
 
   .entry-disclaimer-badge {
-    padding: 3px 8px;
-    font-size: 0.62rem;
-    margin-bottom: 0.65rem;
+    padding: 2px 7px;
+    font-size: 0.58rem;
+    margin-bottom: 0.4rem;
   }
 
   .entry-disclaimer-title {
-    font-size: 1.2rem;
-    margin-bottom: 0.55rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
   }
 
   .entry-disclaimer-body {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    font-size: 0.74rem;
+    line-height: 1.4;
+    margin-bottom: 0.65rem;
   }
 
   .entry-disclaimer-note-text {
-    font-size: 0.78rem;
-    padding: 9px 12px;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    padding: 7px 9px;
+    border-left-width: 2px;
+    margin: 0;
   }
 
   .entry-disclaimer-actions {
+    display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 1rem;
+    gap: 7px;
+    margin-top: 0.65rem;
   }
 
   .entry-disclaimer-actions .btn {
-    width: 100%;
-    padding: 11px 16px;
-    font-size: 0.82rem;
+    flex: none !important;
+    width: 100% !important;
+    min-height: 38px !important;
+    height: 38px !important;
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.08em;
   }
 
   .entry-disclaimer-chambers {
-    margin-top: 0.75rem;
-    padding-top: 0.65rem;
-    font-size: 0.64rem;
+    margin-top: 0.5rem;
+    padding-top: 0.4rem;
+    font-size: 0.58rem;
+    line-height: 1.3;
   }
 
   .counsel-card {
@@ -3634,7 +3652,9 @@ body.disclaimer-locked {
 }
 
 .entry-disclaimer-actions .btn {
-  flex: 1 1 240px;
+  flex: 1 1 200px;
+  height: auto;
+  min-height: 44px;
 }
 
 .entry-disclaimer-chambers {
