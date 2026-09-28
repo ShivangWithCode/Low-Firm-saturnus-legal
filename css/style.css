@@ -384,12 +384,18 @@ button {
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(197, 160, 89, 0.1);
 }
 
+.site-header .nav-container {
+  max-width: 1440px;
+  padding-left: clamp(1rem, 2.5vw, 2.25rem);
+  padding-right: clamp(1rem, 2.5vw, 2.25rem);
+}
+
 .nav-container {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: clamp(10px, 1.5vw, 24px);
 }
 
 /* Brand Logo Lockup */
@@ -466,20 +472,23 @@ button {
   display: none;
   list-style: none;
   align-items: center;
-  gap: clamp(18px, 2.5vw, 32px);
+  gap: clamp(10px, 1.6vw, 24px);
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-ivory);
   opacity: 0.85;
   position: relative;
-  padding: 8px 0;
+  padding: 6px 0;
   transition: opacity var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -505,29 +514,33 @@ button {
 .nav-cta-wrap {
   display: none;
   align-items: center;
-  gap: 16px;
+  gap: clamp(8px, 1vw, 14px);
+  flex-shrink: 0;
 }
 
 .nav-cta-wrap .btn,
 #open-consultation-btn {
-  padding: 8px 18px;
+  padding: 8px 16px;
   min-height: 38px;
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header-tel-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+  gap: 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
   color: var(--color-muted-light);
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 2px;
   transition: color var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header-tel-link:hover {
@@ -3408,6 +3421,62 @@ button {
   .nav-cta-wrap {
     display: flex;
   }
+}
+
+/* Laptop Screens (1024px to 1280px): optimize nav gaps & paddings so consultation button never clips */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .site-header .nav-container {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 8px;
+  }
+
+  .brand-name {
+    font-size: 1.02rem;
+  }
+
+  .brand-sub {
+    font-size: 0.52rem;
+  }
+
+  .nav-menu {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-cta-wrap {
+    gap: 8px;
+  }
+
+  .header-tel-link {
+    font-size: 0.72rem;
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  #open-consultation-btn {
+    padding: 7px 12px;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1120px) {
+  .header-tel-link span {
+    display: none;
+  }
+  .header-tel-link {
+    padding: 6px 8px;
+    border: 1px solid var(--border-gold-subtle);
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
 
   .counsel-grid {
     grid-template-columns: repeat(3, 1fr);
