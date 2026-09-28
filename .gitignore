@@ -14,3 +14,11 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Environment & Sensitive Files
+.env
+.env.*
+*.pem
+*.key
+*.cert
+*.log
