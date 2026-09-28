@@ -1,0 +1,19 @@
+# Saturnus Legal - Robots.txt
+User-agent: *
+Allow: /
+Disallow: /*.json$
+Disallow: /*.config$
+Disallow: /_headers
+Disallow: /.htaccess
+
+# Block aggressive / scrapers
+User-agent: SemrushBot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+
+Sitemap: https://saturnuslegal.com/sitemap.xml

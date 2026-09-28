@@ -1,0 +1,36 @@
+# ==============================================================================
+# HTTP Security Headers for Cloudflare Pages / Netlify Hosting
+# Saturnus Legal
+# ==============================================================================
+
+/*
+  # Prevent MIME-type sniffing
+  X-Content-Type-Options: nosniff
+
+  # Prevent Clickjacking & unauthorized iframe embedding
+  X-Frame-Options: SAMEORIGIN
+
+  # Prevent reflected XSS in older browsers
+  X-XSS-Protection: 1; mode=block
+
+  # Control referrer leakage
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Restrict dangerous browser features and device hardware APIs
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=(), interest-cohort=()
+
+  # Enforce HTTPS strictly for 1 year with preload
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Content Security Policy (CSP)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; connect-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;
+
+# Cache control for static assets (security & performance)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
