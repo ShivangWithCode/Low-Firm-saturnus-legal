@@ -472,21 +472,21 @@ button {
   display: none;
   list-style: none;
   align-items: center;
-  gap: clamp(10px, 1.6vw, 24px);
+  gap: clamp(18px, 2.2vw, 32px);
   margin: 0;
   padding: 0;
 }
 
 .nav-link {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-ivory);
-  opacity: 0.85;
+  opacity: 0.88;
   position: relative;
-  padding: 6px 0;
+  padding: 6px 4px;
   transition: opacity var(--transition-fast), color var(--transition-fast);
   white-space: nowrap;
 }
@@ -3423,56 +3423,31 @@ button {
   }
 }
 
-/* Laptop Screens (1024px to 1280px): optimize nav gaps & paddings so consultation button never clips */
+/* Laptop Screens (1024px to 1280px): spacious nav links and clean layout */
 @media (min-width: 1024px) and (max-width: 1280px) {
   .site-header .nav-container {
-    padding-left: 12px;
-    padding-right: 12px;
-    gap: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 14px;
   }
 
   .brand-name {
-    font-size: 1.02rem;
-  }
-
-  .brand-sub {
-    font-size: 0.52rem;
+    font-size: 1.05rem;
   }
 
   .nav-menu {
-    gap: 12px;
+    gap: clamp(14px, 1.8vw, 24px);
   }
 
   .nav-link {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-  }
-
-  .nav-cta-wrap {
-    gap: 8px;
-  }
-
-  .header-tel-link {
-    font-size: 0.72rem;
-    padding: 4px 6px;
-    gap: 4px;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
   }
 
   #open-consultation-btn {
-    padding: 7px 12px;
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1120px) {
-  .header-tel-link span {
-    display: none;
-  }
-  .header-tel-link {
-    padding: 6px 8px;
-    border: 1px solid var(--border-gold-subtle);
-    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
   }
 }
 
