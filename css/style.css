@@ -1077,6 +1077,93 @@ button {
   font-style: italic;
 }
 
+/* About Statement Card (Luxury Double-Quote Card) */
+.about-statement-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(7, 23, 51, 0.8) 0%, rgba(3, 10, 23, 0.95) 100%);
+  border: 1px solid var(--border-gold-strong);
+  border-left: 3.5px solid var(--color-gold-bright);
+  border-radius: 4px;
+  padding: clamp(1.25rem, 3vw, 1.85rem);
+  margin: 1.5rem 0 1.75rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), inset 0 0 24px rgba(197, 160, 89, 0.05);
+  box-sizing: border-box;
+}
+
+.statement-quote-icon {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: var(--color-gold);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.about-statement-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.08rem, 2vw, 1.25rem);
+  line-height: 1.68;
+  color: var(--color-ivory);
+  letter-spacing: 0.01em;
+  margin: 0 0 1rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.about-statement-text em {
+  font-family: var(--font-sans);
+  font-size: 0.88em;
+  color: var(--color-light-gold);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.statement-counsel {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.statement-firm {
+  font-family: var(--font-roman);
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--color-gold-bright);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(197, 160, 89, 0.25);
+}
+
+.statement-court {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.statement-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.statement-pill {
+  font-family: var(--font-roman);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-light-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statement-pill::before {
+  content: '♦';
+  font-size: 0.6rem;
+  color: var(--color-gold-bright);
+}
+
 .about-copy-text {
   font-size: 1rem;
   color: var(--color-muted-light);
@@ -3252,6 +3339,17 @@ button {
     justify-content: center;
     padding: 11px 16px;
     font-size: 0.82rem;
+  }
+
+  /* About Section Statement Card on Mobile */
+  .about-statement-card {
+    padding: 1.15rem 1rem !important;
+    margin: 1.25rem 0 1.5rem !important;
+  }
+
+  .about-statement-text {
+    font-size: 1.02rem !important;
+    line-height: 1.55 !important;
   }
 
   /* Compact Disclaimer Gateway on Mobile — Fits 100% on screen without scroll */
