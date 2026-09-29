@@ -501,18 +501,8 @@ document.addEventListener('DOMContentLoaded', () => {
       recordSubmission();
 
       // Destination counsel and WhatsApp number
-      let targetPhone = '918750569505';
-      let targetCounselName = 'Advocate Gaurav Singh';
-      if (counselVal === 'surjeet') {
-        targetPhone = '919557641555';
-        targetCounselName = 'Advocate Surjeet Singh';
-      } else if (counselVal === 'pradyuman') {
-        targetPhone = '918368600210';
-        targetCounselName = 'Advocate Pradyuman Tyagi';
-      } else if (counselVal === 'vrinda') {
-        targetPhone = '918750569505';
-        targetCounselName = 'Advocate Vrinda Khanna';
-      }
+      const targetPhone = counselVal === 'surjeet' ? '919557641555' : '918750569505';
+      const targetCounselName = counselVal === 'surjeet' ? 'Advocate Surjeet Singh' : 'Advocate Gaurav Singh';
 
       // Cleanly format WhatsApp enquiry message with standard markdown formatting
       const waTextLines = [
