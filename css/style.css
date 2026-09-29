@@ -3738,8 +3738,10 @@ button {
 @media (min-width: 1024px) {
 
   .counsel-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1.25rem, 2vw, 2rem);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1060px;
+    margin: 0 auto;
+    gap: clamp(1.75rem, 3vw, 2.75rem);
   }
 
   .about-grid {
