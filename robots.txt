@@ -16,4 +16,4 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-Sitemap: https://saturnuslegal.com/sitemap.xml
+Sitemap: https://www.saturnuslegal.com/sitemap.xml
