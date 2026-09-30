@@ -728,4 +728,110 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // -------------------------------------------------------------------------
+  // 9. Scroll Progress Indicator Fallback (when CSS animation-timeline is not supported)
+  // -------------------------------------------------------------------------
+  const scrollProgressBar = document.getElementById('scroll-progress');
+  if (scrollProgressBar && !CSS.supports('animation-timeline', 'scroll()')) {
+    let ticking = false;
+    const updateScrollProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollable > 0) {
+        const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+        scrollProgressBar.style.transform = `scaleX(${progress})`;
+      }
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollProgress);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // -------------------------------------------------------------------------
+  // 10. WebMCP (Web Model Context Protocol) - AI Agent Tools Registration
+  // -------------------------------------------------------------------------
+  if ('modelContext' in document && typeof document.modelContext.registerTool === 'function') {
+    try {
+      // Tool 1: Counsel Directory
+      document.modelContext.registerTool({
+        name: 'get_saturnus_counsel',
+        description: 'Returns the profiles, qualifications, and Supreme Court designations of the advocates at Saturnus Legal (Surjeet Singh, Gaurav Singh, etc.).',
+        inputSchema: { type: 'object', properties: {} },
+        execute() {
+          return [
+            {
+              name: 'Surjeet Singh',
+              title: 'Advocate & Government Pleader, Union of India',
+              court: 'Supreme Court of India & High Courts',
+              specialization: 'Service Matters, Writ Petitions, Banking & Finance, SARFAESI, Commercial Arbitration',
+              phone: '+91 9557641555'
+            },
+            {
+              name: 'Gaurav Singh',
+              title: 'Advocate-on-Record (AOR)',
+              court: 'Supreme Court of India',
+              specialization: 'Appellate Advocacy, Special Leave Petitions (SLPs), Complex Commercial Disputes',
+              phone: '+91 8750569505'
+            },
+            {
+              name: 'Vrinda Khanna',
+              title: 'Advocate & Chambers Associate',
+              court: 'Supreme Court of India & High Court of Delhi',
+              specialization: 'Civil Litigation, Commercial Disputes, Constitutional Writs'
+            },
+            {
+              name: 'Pradyuman Tyagi',
+              title: 'Advocate & Criminal Defense Counsel',
+              court: 'Supreme Court of India & Trial Courts',
+              specialization: 'Criminal Appeals, Bail Matters, Trial Advocacy'
+            }
+          ];
+        },
+        annotations: { readOnlyHint: true }
+      });
+
+      // Tool 2: Practice Areas
+      document.modelContext.registerTool({
+        name: 'get_practice_areas',
+        description: 'Returns the core legal practice areas handled by Saturnus Legal before the Supreme Court of India and appellate tribunals.',
+        inputSchema: { type: 'object', properties: {} },
+        execute() {
+          return [
+            'Special Leave Petitions (SLPs - Civil & Criminal)',
+            'Service Law & Central Administrative Tribunal (CAT) Writs',
+            'Commercial Arbitration & High-Stakes Contractual Disputes',
+            'SARFAESI, Debt Recovery (DRT/DRAT) & Insolvency (IBC/NCLAT)',
+            'Constitutional Writs (Habeas Corpus, Mandamus, Quo Warranto)',
+            'Taxation, Regulatory & Environmental Appeals (NGT)'
+          ];
+        },
+        annotations: { readOnlyHint: true }
+      });
+
+      // Tool 3: Chambers Contact & Location
+      document.modelContext.registerTool({
+        name: 'get_chambers_contact',
+        description: 'Returns the chambers location, phone numbers, and emergency consultation guidelines for Saturnus Legal.',
+        inputSchema: { type: 'object', properties: {} },
+        execute() {
+          return {
+            chambersAddress: '50 Todarmal Road, Bengali Market, New Delhi, Delhi 110001',
+            phones: ['+91 8750569505', '+91 9557641555', '+91 8368600210'],
+            email: 'consult@saturnuslegal.com',
+            website: 'https://www.saturnuslegal.com',
+            jurisdiction: 'Supreme Court of India, New Delhi'
+          };
+        },
+        annotations: { readOnlyHint: true }
+      });
+    } catch (e) {
+      // Graceful degradation if registration fails
+    }
+  }
+
 });
+
