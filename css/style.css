@@ -3000,7 +3000,16 @@ p,
   gap: 20px;
 }
 
-.footer-legal-links a:hover {
+.footer-disclaimer-link {
+  color: var(--color-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast);
+}
+
+.footer-legal-links a:hover,
+.footer-disclaimer-link:hover {
   color: var(--color-light-gold);
 }
 
@@ -3431,6 +3440,14 @@ p,
     max-height: 92vh;
     border-radius: 6px;
     margin: auto;
+  }
+
+  .disclaimer-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
   }
 
   .entry-disclaimer-header {
@@ -3909,6 +3926,33 @@ body.disclaimer-locked {
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 45px rgba(197, 160, 89, 0.22);
   transform: scale(1) translateY(0);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.disclaimer-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-gold-subtle);
+  background: rgba(3, 11, 24, 0.85);
+  color: var(--color-light-gold);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 15;
+  transition: all var(--transition-fast);
+}
+
+.disclaimer-close-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-deep-navy);
+  border-color: var(--color-gold);
+  transform: rotate(90deg);
 }
 
 .entry-disclaimer-gateway.accepted .entry-disclaimer-card {

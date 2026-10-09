@@ -61,7 +61,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const disclaimerGateway = document.getElementById('entry-disclaimer-gateway');
   const disclaimerAgreeBtn = document.getElementById('disclaimer-agree-btn');
   const disclaimerDeclineBtn = document.getElementById('disclaimer-decline-btn');
+  const disclaimerCloseBtn = document.getElementById('disclaimer-close-btn');
   const DISCLAIMER_STORAGE_KEY = 'saturnus_bci_disclaimer_accepted';
+
+  const closeDisclaimer = () => {
+    try {
+      sessionStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
+      localStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
+    } catch (e) {
+      // Storage restricted
+    }
+    if (disclaimerGateway) {
+      disclaimerGateway.classList.add('accepted');
+      setTimeout(() => {
+        disclaimerGateway.style.display = 'none';
+      }, 450);
+    }
+    document.body.classList.remove('disclaimer-locked');
+    document.body.style.overflow = '';
+  };
+
+  const openDisclaimer = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!disclaimerGateway) return;
+    disclaimerGateway.style.display = 'flex';
+    void disclaimerGateway.offsetHeight;
+    disclaimerGateway.classList.remove('accepted');
+    document.body.classList.add('disclaimer-locked');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      if (disclaimerCloseBtn) disclaimerCloseBtn.focus();
+      else if (disclaimerAgreeBtn) disclaimerAgreeBtn.focus();
+    }, 100);
+  };
 
   const checkDisclaimerStatus = () => {
     if (!disclaimerGateway) return;
@@ -79,31 +111,33 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove('disclaimer-locked');
       document.body.style.overflow = '';
     } else {
-      disclaimerGateway.classList.remove('accepted');
-      disclaimerGateway.style.display = 'flex';
-      document.body.classList.add('disclaimer-locked');
-      setTimeout(() => {
-        if (disclaimerAgreeBtn) disclaimerAgreeBtn.focus();
-      }, 120);
+      openDisclaimer();
     }
   };
 
   if (disclaimerAgreeBtn) {
-    disclaimerAgreeBtn.addEventListener('click', () => {
-      try {
-        sessionStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
-        localStorage.setItem(DISCLAIMER_STORAGE_KEY, 'true');
-      } catch (e) {
-        // Storage restricted
+    disclaimerAgreeBtn.addEventListener('click', closeDisclaimer);
+  }
+
+  if (disclaimerCloseBtn) {
+    disclaimerCloseBtn.addEventListener('click', closeDisclaimer);
+  }
+
+  // Close when clicking outside modal card (backdrop)
+  if (disclaimerGateway) {
+    disclaimerGateway.addEventListener('click', (e) => {
+      if (e.target === disclaimerGateway) {
+        closeDisclaimer();
       }
-      if (disclaimerGateway) {
-        disclaimerGateway.classList.add('accepted');
-        disclaimerGateway.style.display = 'none';
-      }
-      document.body.classList.remove('disclaimer-locked');
-      document.body.style.overflow = '';
     });
   }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && disclaimerGateway && !disclaimerGateway.classList.contains('accepted')) {
+      closeDisclaimer();
+    }
+  });
 
   if (disclaimerDeclineBtn) {
     disclaimerDeclineBtn.addEventListener('click', () => {
@@ -124,18 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Footer / internal links to #disclaimer can re-display terms
-  const footerDisclaimerLinks = document.querySelectorAll('a[href="#disclaimer"]');
+  // Footer / internal links to #disclaimer re-display terms
+  const footerDisclaimerLinks = document.querySelectorAll('a[href="#disclaimer"], .footer-disclaimer-link, #footer-disclaimer-btn');
   footerDisclaimerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (disclaimerGateway) {
-        disclaimerGateway.classList.remove('accepted');
-        document.body.classList.add('disclaimer-locked');
-        setTimeout(() => {
-          if (disclaimerAgreeBtn) disclaimerAgreeBtn.focus();
-        }, 120);
-      }
-    });
+    link.addEventListener('click', openDisclaimer);
   });
 
   // Initialize disclaimer immediately
