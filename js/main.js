@@ -811,9 +811,9 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
               name: 'Pradyuman Tyagi',
-              title: 'Advocate & Criminal Defense Counsel',
-              court: 'Supreme Court of India & Trial Courts',
-              specialization: 'Criminal Appeals, Bail Matters, Trial Advocacy'
+              title: 'Advocate & Additional Standing Counsel (Delhi High Court & MCD)',
+              court: 'High Court of Delhi & District Courts',
+              specialization: 'Criminal Defense, Municipal Law, Bail Matters, Trial Advocacy'
             }
           ];
         },
