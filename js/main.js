@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!checkRateLimit()) {
         showStatus(
           statusEl,
-          'Multiple enquiries received from this session. For urgent matters, please contact chambers directly via phone.',
+          'Multiple enquiries received from this session. For urgent matters, please contact office directly via phone.',
           'error'
         );
         return;
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '*Brief Summary of Matter:*',
         messageVal,
         '━━━━━━━━━━━━━━━━━━━━━',
-        '_Transmitted via Chambers Consultation Portal_'
+        '_Transmitted via Office Consultation Portal_'
       ];
 
       const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waTextLines.join('\n'))}`;
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
               name: 'Vrinda Khanna',
-              title: 'Advocate & Chambers Associate',
+              title: 'Advocate & Associate',
               court: 'Supreme Court of India & High Court of Delhi',
               specialization: 'Civil Litigation, Commercial Disputes, Constitutional Writs'
             },
@@ -838,13 +838,14 @@ document.addEventListener('DOMContentLoaded', () => {
         annotations: { readOnlyHint: true }
       });
 
-      // Tool 3: Chambers Contact & Location
+      // Tool 3: Office Contact & Location
       document.modelContext.registerTool({
-        name: 'get_chambers_contact',
-        description: 'Returns the chambers location, phone numbers, and emergency consultation guidelines for Saturnus Legal.',
+        name: 'get_office_contact',
+        description: 'Returns the office location, phone numbers, and emergency consultation guidelines for Saturnus Legal.',
         inputSchema: { type: 'object', properties: {} },
         execute() {
           return {
+            officeAddress: '50 Todarmal Road, Bengali Market, New Delhi, Delhi 110001',
             chambersAddress: '50 Todarmal Road, Bengali Market, New Delhi, Delhi 110001',
             phones: ['+91 8750569505', '+91 9557641555', '+91 8368600210'],
             email: 'consult@saturnuslegal.com',
